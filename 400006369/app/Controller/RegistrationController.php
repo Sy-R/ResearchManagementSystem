@@ -27,6 +27,8 @@ private $errors = array();
 
 // Methods
     public function getValues(){
+        password_hash($this->password, PASSWORD_DEFAULT);
+
         return array(
             'username' => $this->username,
             'password' => $this->password,
@@ -34,6 +36,7 @@ private $errors = array();
             'role' => $this->role
         );
     }
+    
     private function validateForm(){
         $this->validatePassword();
         $this->validateEmail();

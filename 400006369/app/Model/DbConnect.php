@@ -59,10 +59,13 @@ class DbConnect{
         $stmt->execute();
         $result = $stmt->get_result();
 
+        if($result != TRUE){
+            return "Error: " . $stmt->error;
+        }
+
         // if($result == TRUE){
         //     return  "Welcome!";
         // } else {
-        //     // return "Error: " . $stmt->error;
         //     return "Error inserting user";
         // }
         $stmt->close();

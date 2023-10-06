@@ -41,8 +41,8 @@
 
         <label for="role">Role:</label>
         <select id="role" name="role" required>
-            <option value="Research Group Manager">Research Group Manager</option>
-            <option value="Research Study Manager">Research Study Manager</option>
+            <!-- <option value="Research Group Manager">Research Group Manager</option> -->
+            <!-- <option value="Research Study Manager">Research Study Manager</option> -->
             <option value="Researcher">Researcher</option>
         </select>
 
