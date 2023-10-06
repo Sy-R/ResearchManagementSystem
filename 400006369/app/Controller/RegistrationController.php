@@ -26,13 +26,17 @@ private $errors = array();
     }//constructor
 
 // Methods
-
+    public function getValues(){
+        return array(
+            'username' => $this->username,
+            'password' => $this->password,
+            'email' => $this->email,
+            'role' => $this->role
+        );
+    }
     private function validateForm(){
         $this->validatePassword();
         $this->validateEmail();
-    }
-    public function getUsername(){
-        return $this->username;
     }
 
     private function validatePassword(){
@@ -55,9 +59,14 @@ private $errors = array();
         $this->errors['email'] = "Invalid email";
     }
 
+    public function getUsername(){
+        return $this->username;
+    }
+    
     public function getErrors(){
         return $this->errors;
     }
 }
 
 ?>
+<!-- done -->

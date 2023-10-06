@@ -45,6 +45,28 @@ class DbConnect{
 
         $stmt->close();
     }
+
+    public function insertUser($values){
+        $username = $values['username'];
+        $email = $values['email'];
+        $password = $values['password'];
+        $role = $values['role'];
+
+        $sql = "INSERT INTO users (username, password, email, role)
+        VALUES (?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssss", $username, $password,  $email, $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // if($result == TRUE){
+        //     return  "Welcome!";
+        // } else {
+        //     // return "Error: " . $stmt->error;
+        //     return "Error inserting user";
+        // }
+        $stmt->close();
+    }
 }
 
 ?>

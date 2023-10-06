@@ -37,7 +37,7 @@
         <input type="text" id="email" name="email" required>
 
         <label for="password">Password:</label>
-        <input type="text" id="password" name="password" required>
+        <input type="password" id="password" name="password" required>
 
         <label for="role">Role:</label>
         <select id="role" name="role" required>
@@ -56,4 +56,4 @@
     </footer>
 </body>
 </html>
-<!-- css, html done -->
+<!-- css, html, validation done -->
