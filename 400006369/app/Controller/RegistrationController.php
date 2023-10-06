@@ -27,11 +27,11 @@ private $errors = array();
 
 // Methods
     public function getValues(){
-        password_hash($this->password, PASSWORD_DEFAULT);
+        $password = password_hash($this->password, PASSWORD_DEFAULT);
 
         return array(
             'username' => $this->username,
-            'password' => $this->password,
+            'password' => $password,
             'email' => $this->email,
             'role' => $this->role
         );

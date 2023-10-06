@@ -1,20 +1,25 @@
 <?php
 require_once 'RegistrationController.php';
-require_once '../Model/DbConnect.php';
+//require_once '../Model/DbConnect.php';
+require_once '../Model/RegistrationModel.php';
 
-//Create database object
-$db = new DbConnect();
 
-//Create registration object
+//Create database connection
+//$db = new DbConnect();
+
+//registration controller
 $validateRegistration = new RegisterController();
+
+//registration model
+$addRegistration = new RegistrationModel();
 
 //Get any errors from the registration object
 $error_array = $validateRegistration->getErrors();
 
-//send username to database
+//Get username to verfity
 $userUsername = $validateRegistration->getUsername();
-//If username is found, store error message in result
-$nameResult = $db->searchUsername($userUsername);
+// send username to database, If username is found, store error message in result
+$nameResult = $addRegistration->searchUsername($userUsername);
 
 //Append username error if any, to the errors from registration
 if($nameResult !== null){
@@ -24,7 +29,7 @@ if($nameResult !== null){
 //If no errors add record to database
 if(empty($error_array)){
     $values = $validateRegistration -> getValues();
-    $insertResult = $db->insertUser($values);
+    $insertResult = $addRegistration->insertUser($values);
     header('Location: ../View/Login.php');
     exit();
 }
