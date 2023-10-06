@@ -40,6 +40,12 @@ header > img{
 }   
 
 /* body */
+#errors{
+    color:red;
+    font-weight: bold;
+    font-size: small;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color:ghostwhite;
