@@ -1,18 +1,24 @@
 <?php
+namespace Model;
+use Exception;
+try{
+    //autoloader
+    require_once '../Autoloader.php';
+
+    //Register the autoloader
+    \app\MyAutoloader::register();
+    
+}catch(Exception $e){
+    echo  $e->getMessage();
+}
+
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
-require_once 'DbConnect.php';
-
-//Create database connection
-$db = new DbConnect();
-
 class LoginModel{
 
-    private function findUser($email ,$password){
-        global $db;
-
+    private function findUser($email ,$password, $db){
         //Ensure user exist in the databse
         $sql = "SELECT * FROM users WHERE email = ?";
         $stmt = $db->connect()->prepare($sql);
@@ -41,7 +47,9 @@ class LoginModel{
     }
 
     public function userResults($email, $password){
-        return $this->findUser($email, $password);
+        //create database connection, send connection to findUser to query database
+        $db = new DbConnect();
+        return $this->findUser($email, $password, $db);
     }
 
 }

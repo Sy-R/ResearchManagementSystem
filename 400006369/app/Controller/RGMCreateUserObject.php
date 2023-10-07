@@ -1,12 +1,16 @@
 <?php
-require_once 'RegistrationController.php';
-require_once '../Model/RegistrationModel.php';
+try{
+//autoloader
+require_once '../Autoloader.php';
+
+//Register the autoloader
+\app\MyAutoloader::register();
 
 //create registration controller
-$validateRegistration = new RegistrationController();
+$validateRegistration = new \Controller\RegistrationController();
 
 //create registration model
-$addRegistration = new RegistrationModel();
+$addRegistration = new \Model\RegistrationModel();
 
 //Get any errors from the registration object
 $error_array = $validateRegistration->getErrors();
@@ -34,16 +38,16 @@ if(empty($error_array)){
     }
 }
 
-
-
 // Serialize the array and encode it for safe URL transport
 $error_message = urlencode(serialize($error_array));
 //$error_message = urlencode(json_encode($error_array));
 
-
-
-//send any errors to the user
+//send any errors/messages to the user
 header('Location: ../View/RGMCreateUser.php?errors='. $error_message);
 exit();
+
+}catch(Exception $e){
+    echo  $e->getMessage();
+}
 ?>
 

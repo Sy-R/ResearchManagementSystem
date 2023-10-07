@@ -1,7 +1,19 @@
 <?php
-require_once 'testInput.php';
+namespace Controller;
+use Exception;
+try{
+    //autoloader
+    require_once '../Autoloader.php';
+
+    //Register the autoloader
+    \app\MyAutoloader::register();
+    
+}catch(Exception $e){
+    echo  $e->getMessage();
+}
 
 class LoginController{
+use testInput; //trait
 
 //Member variables
 //define variables
@@ -13,8 +25,8 @@ public function __construct(){
     //clean data 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $this->email = test_inputs($_POST["email"]);
-        $this->password = test_inputs($_POST["password"]);
+        $this->email = $this->test_inputs($_POST["email"]);
+        $this->password = $this->test_inputs($_POST["password"]);
     }
     }//constructor
 

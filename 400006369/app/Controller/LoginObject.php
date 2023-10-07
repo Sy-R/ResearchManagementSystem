@@ -1,15 +1,18 @@
 <?php
-// if(session_status() == PHP_SESSION_NONE){
+ if(session_status() == PHP_SESSION_NONE){
     session_start();
-// }
-require_once '../Model/LoginModel.php';
-require_once 'LoginController.php';
+ }
+try{
+//autoloader
+require_once '../Autoloader.php';
+//Register the autoloader
+\app\MyAutoloader::register();
 
 //create login controller
-$loginController = new LoginController();
+$loginController = new \Controller\LoginController();
 
 //create login model
-$loginModel = new LoginModel();
+$loginModel = new \Model\LoginModel();
 
 //Get enetered password and email
 $enteredPassword = $loginController->getPassword();
@@ -26,19 +29,14 @@ if ($searchResults !== null){
 if(empty($error)){
     header('Location: GoTo.php');
     exit(); 
-    // if ($_SESSION["role"] == "Research Group Manager"){
-    //     header('Location: ../View/RGMDashboard.php');
-    //     exit();
-    // }elseif ($_SESSION["role"] == "Research Study Manager"){
-    //     header('Location: ../View/RSMDashboard.php');
-    //     exit;
-    // }elseif($_SESSION["role"] == "Researcher")
-    // header('Location: ../View/RDashboard.php');
 }
 else{
 //Send errors back to user
 $error_message = urlencode($error);
 header('Location: ../View/Login.php?errors='. $error_message);
 exit(); 
+}
+}catch(Exception $e){
+    echo  $e->getMessage();
 }
 ?>

@@ -1,7 +1,19 @@
 <?php
-require_once 'testInput.php';
+namespace Controller;
+use Exception;
+try{
+    //autoloader
+    require_once '../Autoloader.php';
+
+    //Register the autoloader
+    \app\MyAutoloader::register();
+    
+}catch(Exception $e){
+    echo  $e->getMessage();
+}
 
 class RegistrationController{
+use testInput; //trait
 
 //Member variables
 //define variables
@@ -16,10 +28,10 @@ private $errors = array();
     //clean data 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $this->username = test_inputs($_POST["username"]);
-        $this->email = test_inputs($_POST["email"]);
-        $this->password = test_inputs($_POST["password"]);
-        $this->role = test_inputs($_POST["role"]);
+        $this->username = $this->test_inputs($_POST["username"]);
+        $this->email = $this->test_inputs($_POST["email"]);
+        $this->password = $this->test_inputs($_POST["password"]);
+        $this->role = $this->test_inputs($_POST["role"]);
 
         $this->validateForm();
     }

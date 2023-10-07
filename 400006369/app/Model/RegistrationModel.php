@@ -1,13 +1,22 @@
 <?php
-require_once 'DbConnect.php';
+namespace Model;
+use Exception;
+try{
+    //autoloader
+    require_once '../Autoloader.php';
 
-//Create database connection
-$db = new DbConnect();
+    //Register the autoloader
+    \app\MyAutoloader::register();
+
+}catch(Exception $e){
+    echo  $e->getMessage();
+}
 
 class RegistrationModel{
-
+ 
     public function searchUsername($username){
-        global $db;
+        //Create database connection
+        $db = new DbConnect();
 
         //Ensure username is unique in the databse
         $sql = "SELECT * FROM users WHERE username = ?";
@@ -25,9 +34,10 @@ class RegistrationModel{
     }
 
     
-    public function insertUser($values){
-        global $db;
-        
+    public function insertUser($values){   
+        //Create database connection
+        $db = new DbConnect();
+
         $username = $values['username'];
         $email = $values['email'];
         $password = $values['password'];

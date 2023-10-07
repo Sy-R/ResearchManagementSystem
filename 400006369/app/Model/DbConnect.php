@@ -1,4 +1,5 @@
 <?php
+namespace Model;
 class DbConnect{
 
     private $host = "localhost";
@@ -21,10 +22,6 @@ class DbConnect{
         }else
         return $this->conn;
     }
-
-    // public function getConnection(){
-    //      return $this->conn;
-    // }
 
     public function close(){
         $this->conn->close();

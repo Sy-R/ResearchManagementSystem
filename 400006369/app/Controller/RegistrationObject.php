@@ -1,17 +1,17 @@
 <?php
-require_once 'RegistrationController.php';
-//require_once '../Model/DbConnect.php';
-require_once '../Model/RegistrationModel.php';
-
-
-//Create database connection
-//$db = new DbConnect();
+// require_once 'RegistrationController.php';
+// require_once '../Model/RegistrationModel.php';
+try{
+//autoloader
+require_once '../Autoloader.php';
+//Register the autoloader
+\app\MyAutoloader::register();
 
 //create registration controller
-$validateRegistration = new RegistrationController();
+$validateRegistration = new \Controller\RegistrationController();
 
 //create registration model
-$addRegistration = new RegistrationModel();
+$addRegistration = new \Model\RegistrationModel();
 
 //Get any errors from the registration object
 $error_array = $validateRegistration->getErrors();
@@ -44,6 +44,9 @@ $error_message = urlencode(serialize($error_array));
 //send any errors to the user
 header('Location: ../View/Registration.php?errors='. $error_message);
 exit();
+}catch(Exception $e){
+    echo  $e->getMessage();
+}
 ?>
 
 <!-- done -->
