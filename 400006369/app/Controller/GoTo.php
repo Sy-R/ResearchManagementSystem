@@ -6,14 +6,18 @@ if(session_status() == PHP_SESSION_NONE){
 }
 if(!isset($_SESSION['role'])){
     header('Location: ../View/Login.php');
+    exit();
 }
 if($_SESSION['role'] == "Researcher"){
     header('Location: ../View/RDashboard.php');
+    exit();
 }
 if($_SESSION['role'] == "Research Study Manager"){
     header('Location: ../View/RSMDashboard.php');
+    exit();
 }
 if($_SESSION['role'] == "Research Group Manager"){
     header('Location: ../View/RGMDashboard.php');
+    exit();
 }
 ?> 
