@@ -6,6 +6,7 @@ if(session_status() == PHP_SESSION_NONE){
 }
 if(!isset($_SESSION['role'])){
     header('Location: Login.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>

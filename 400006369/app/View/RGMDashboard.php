@@ -6,9 +6,11 @@ if(session_status() == PHP_SESSION_NONE){
 }
 if(!isset($_SESSION['role'])){
     header('Location: Login.php');
+    exit();
 }
 if($_SESSION['role'] !== "Research Group Manager"){
     header('Location: Unauthorized.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>
