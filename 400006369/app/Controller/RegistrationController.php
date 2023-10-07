@@ -1,10 +1,10 @@
 <?php
 require_once 'testInput.php';
 
-class registerController{
+class RegistrationController{
 
 //Member variables
-//define variables and set to empty values
+//define variables
 private $username ;
 private $password;
 private $email;

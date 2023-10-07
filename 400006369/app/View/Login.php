@@ -8,9 +8,20 @@
     </head>
 
     <body>
-        <form>
+    <form action="../Controller/LoginObject.php" method="post">
             <h3>Sign In</h3>
+            <p id="errors">
+            <?php
+            if (isset($_GET['errors'])) {
+                // Retrieve errors from the query parameter
+                $error_message = urldecode($_GET['errors']);
             
+                // Display the errors
+                    echo "*$error_message<br>";
+
+    
+            }
+            ?>
             <label for="email">Email</label>
             <input type="email" id="email" name="email">
 
@@ -19,7 +30,7 @@
 
             <button type="submit" class="cntrButton">Sign in</button>
 
-            <p>Need an account? <a href="">Register</a></p>
+            <p>Need an account? <a href="Registration.php">Register</a></p>
         </form>
 
         <footer class="footer">

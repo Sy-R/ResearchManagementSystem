@@ -38,6 +38,9 @@ class RegistrationModel{
         $stmt = $db->connect()->prepare($sql);
         $stmt->bind_param("ssss", $username, $password,  $email, $role);
         $stmt->execute();
+        if($stmt->error){
+            return $stmt->error;
+        }
         $stmt->close();
     }
 }

@@ -1,11 +1,6 @@
 <?php
 require_once 'RegistrationController.php';
-//require_once '../Model/DbConnect.php';
 require_once '../Model/RegistrationModel.php';
-
-
-//Create database connection
-//$db = new DbConnect();
 
 //create registration controller
 $validateRegistration = new RegistrationController();
@@ -30,20 +25,23 @@ if($nameResult !== null){
 if(empty($error_array)){
     $values = $validateRegistration -> getValues();
     $insertResult = $addRegistration->insertUser($values);
-    header('Location: ../View/Login.php');
+    //check for insert errors
+    if($insertResult){
+        array_push($error_array,$insertResult);
+    }else{
+    header('Location: ../View/RGMCreateUser.php');
     exit();
+    }
 }
 
-// //Append insertion message to the errors from registration
-//     $insertResult = $db->insertUser($values);
-//     array_push($error_array,$insertResult);
+
 
 // Serialize the array and encode it for safe URL transport
 $error_message = urlencode(serialize($error_array));
 
+
 //send any errors to the user
-header('Location: ../View/Registration.php?errors='. $error_message);
+header('Location: ../View/RGMCreateUser.php?errors='. $error_message);
 exit();
 ?>
 
-<!-- done -->

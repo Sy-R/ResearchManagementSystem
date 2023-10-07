@@ -1,20 +1,42 @@
+<!-- control access to page, check session varaibles to ensure user has autthrization, 
+if not redirect to error page  -->
+<?php
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+if(!isset($_SESSION['role'])){
+    header('Location: Login.php');
+}
+if($_SESSION['role'] == "Researcher"){
+    header('Location: Unauthorized.php');
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
     <title>Research Study Manager</title>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     </head>
 
     <body>
         <header>
             <img src="research.png" alt="logo">
-            <a href="">Log out</a>
+            <a href="../Controller/logout.php">Log out</a>
    
             <div class="userInfo">
-           <p id="userTitle">Research Study Manager: Kathy Holmes</p>
-           <p id="userEmail">Email: jfhgubg23324@out.com</p>
+           <p id="userTitle">Research Study Manager: 
+            <?php 
+                echo $_SESSION['username']
+            ?>
+           </p>
+           <p id="userEmail">Email: 
+            <?php 
+                echo $_SESSION['email']
+            ?>
+           </p>
        </div>
        </header>
 

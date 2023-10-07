@@ -11,7 +11,7 @@
 <body>
 
     <form action="../Controller/RegistrationObject.php" method="post">
-        <h3>Create an account</h3>
+        <h3>Create an Account</h3>
         <p id="errors">
             <?php
             if (isset($_GET['errors'])) {
@@ -41,14 +41,12 @@
 
         <label for="role">Role:</label>
         <select id="role" name="role" required>
-            <!-- <option value="Research Group Manager">Research Group Manager</option> -->
-            <!-- <option value="Research Study Manager">Research Study Manager</option> -->
             <option value="Researcher">Researcher</option>
         </select>
 
         <button type="submit">Register</button>
 
-        <p>Already have an account? <a href="">Sign in</a></p>
+        <p>Already have an account? <a href="Login.php">Sign in</a></p>
     </form>
 
     <footer class="footer">
