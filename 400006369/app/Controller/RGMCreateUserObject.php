@@ -29,8 +29,8 @@ if(empty($error_array)){
     if($insertResult){
         array_push($error_array,$insertResult);
     }else{
-    header('Location: ../View/RGMCreateUser.php');
-    exit();
+        $inserted = "User Inserted";
+        array_push($error_array,$inserted);
     }
 }
 
@@ -38,6 +38,8 @@ if(empty($error_array)){
 
 // Serialize the array and encode it for safe URL transport
 $error_message = urlencode(serialize($error_array));
+//$error_message = urlencode(json_encode($error_array));
+
 
 
 //send any errors to the user
