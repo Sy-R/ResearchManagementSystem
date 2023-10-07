@@ -3,7 +3,8 @@
 // require_once '../Model/RegistrationModel.php';
 try{
 //autoloader
-require_once '../Autoloader.php';
+//require_once '../Autoloader.php';
+require_once 'Autoloader.php';
 //Register the autoloader
 \app\MyAutoloader::register();
 
@@ -30,7 +31,7 @@ if($nameResult !== null){
 if(empty($error_array)){
     $values = $validateRegistration -> getValues();
     $insertResult = $addRegistration->insertUser($values);
-    header('Location: ../View/Login.php');
+    header('Location: ./View/Login.php');
     exit();
 }
 
@@ -42,7 +43,7 @@ if(empty($error_array)){
 $error_message = urlencode(serialize($error_array));
 
 //send any errors to the user
-header('Location: ../View/Registration.php?errors='. $error_message);
+header('Location: ./View/Registration.php?errors='. $error_message);
 exit();
 }catch(Exception $e){
     echo  $e->getMessage();

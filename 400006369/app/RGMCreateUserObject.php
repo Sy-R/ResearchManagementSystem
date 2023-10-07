@@ -1,7 +1,7 @@
 <?php
 try{
 //autoloader
-require_once '../Autoloader.php';
+require_once 'Autoloader.php';
 
 //Register the autoloader
 \app\MyAutoloader::register();
@@ -43,7 +43,7 @@ $error_message = urlencode(serialize($error_array));
 //$error_message = urlencode(json_encode($error_array));
 
 //send any errors/messages to the user
-header('Location: ../View/RGMCreateUser.php?errors='. $error_message);
+header('Location: ./View/RGMCreateUser.php?errors='. $error_message);
 exit();
 
 }catch(Exception $e){

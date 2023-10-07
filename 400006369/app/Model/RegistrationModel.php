@@ -3,7 +3,7 @@ namespace Model;
 use Exception;
 try{
     //autoloader
-    require_once '../Autoloader.php';
+    require_once 'Autoloader.php';
 
     //Register the autoloader
     \app\MyAutoloader::register();

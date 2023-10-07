@@ -4,7 +4,8 @@
  }
 try{
 //autoloader
-require_once '../Autoloader.php';
+//require_once '../Autoloader.php';
+require_once 'Autoloader.php';
 //Register the autoloader
 \app\MyAutoloader::register();
 
@@ -27,13 +28,15 @@ if ($searchResults !== null){
 }
 //Redirect to dashboard
 if(empty($error)){
-    header('Location: GoTo.php');
+    //header('Location: GoTo.php');
+    header('Location: ./Controller/GoTo.php');
     exit(); 
 }
 else{
 //Send errors back to user
 $error_message = urlencode($error);
-header('Location: ../View/Login.php?errors='. $error_message);
+// header('Location: ../View/Login.php?errors='. $error_message);
+header('Location: ./View/Login.php?errors='. $error_message);
 exit(); 
 }
 }catch(Exception $e){

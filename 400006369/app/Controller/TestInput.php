@@ -10,4 +10,3 @@ function test_inputs($data){
 }
 ?>
 
-<!-- Make this a trait -->

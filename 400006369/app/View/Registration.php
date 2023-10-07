@@ -10,7 +10,7 @@
 
 <body>
 
-    <form action="../Controller/RegistrationObject.php" method="post">
+    <form action=".././RegistrationObject.php" method="post">
         <h3>Create an Account</h3>
         <p id="errors">
             <?php

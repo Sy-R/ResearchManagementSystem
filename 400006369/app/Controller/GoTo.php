@@ -1,4 +1,4 @@
-<!-- control access to page, check session varaibles to ensure user has authorization, 
+<!-- control access to page, check session varaibles to ensure user has authorization,
 if not redirect to error page  -->
  <?php
 if(session_status() == PHP_SESSION_NONE){

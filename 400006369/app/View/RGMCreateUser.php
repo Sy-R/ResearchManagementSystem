@@ -41,7 +41,7 @@ if($_SESSION['role'] !== "Research Group Manager"){
         </div>
         </header>
 
-        <form action="../Controller/RGMCreateUserObject.php" method="post">
+        <form action=".././RGMCreateUserObject.php" method="post">
             <h3>Create a User</h3>
             <p id="errors">
             <?php

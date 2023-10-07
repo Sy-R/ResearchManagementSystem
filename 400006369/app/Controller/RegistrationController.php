@@ -3,7 +3,7 @@ namespace Controller;
 use Exception;
 try{
     //autoloader
-    require_once '../Autoloader.php';
+    require_once '../app/Autoloader.php';
 
     //Register the autoloader
     \app\MyAutoloader::register();

@@ -3,7 +3,7 @@ namespace Model;
 use Exception;
 try{
     //autoloader
-    require_once '../Autoloader.php';
+    require_once '../app/Autoloader.php';
 
     //Register the autoloader
     \app\MyAutoloader::register();
@@ -39,11 +39,17 @@ class LoginModel{
             $_SESSION['email'] = $user['email'];
             $_SESSION['password'] = $user['password'];
             $_SESSION['role'] = $user['role'];
+        }else{
+            $stmt->close();
+            return "Invalid email/password.";
         }
-        }else
-        return "Invalid email/password.";
 
+        }else{
         $stmt->close();
+        return "Invalid email/password.";
+        }
+
+        
     }
 
     public function userResults($email, $password){

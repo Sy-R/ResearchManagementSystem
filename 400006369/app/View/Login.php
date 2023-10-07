@@ -8,7 +8,8 @@
     </head>
 
     <body>
-    <form action="../Controller/LoginObject.php" method="post">
+    <form action=".././LoginObject.php" method="post">
+
             <h3>Sign In</h3>
             <p id="errors">
             <?php
