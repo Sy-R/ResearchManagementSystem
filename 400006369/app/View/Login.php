@@ -10,6 +10,10 @@
     <body>
     <form action=".././LoginObject.php" method="post">
 
+        <header>
+            <a href="../Controller/logout.php">Log out</a>
+        </header>
+
             <h3>Sign In</h3>
             <p id="errors">
             <?php
