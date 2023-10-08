@@ -11,7 +11,7 @@
 
     <header>
              <img src="research.png" alt="logo">
-             <a href="">Log out</a> 
+             <a href="../Controller/logout.php">Log out</a> 
     <header>
         <div id="unauth">
         <h3 id="errors">UNAUTHORIZED ACCESS</h3>
