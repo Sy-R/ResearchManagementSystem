@@ -4,7 +4,6 @@
  }
 try{
 //autoloader
-//require_once '../Autoloader.php';
 require_once 'Autoloader.php';
 //Register the autoloader
 \app\MyAutoloader::register();
@@ -35,7 +34,6 @@ if(empty($error)){
 else{
 //Send errors back to user
 $error_message = urlencode($error);
-// header('Location: ../View/Login.php?errors='. $error_message);
 header('Location: ./View/Login.php?errors='. $error_message);
 exit(); 
 }
