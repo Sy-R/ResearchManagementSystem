@@ -31,6 +31,9 @@ class RegistrationModel{
         }
 
         $stmt->close();
+
+        //close db connection
+        $db->close();
     }
 
     
@@ -49,9 +52,31 @@ class RegistrationModel{
         $stmt->bind_param("ssss", $username, $password,  $email, $role);
         $stmt->execute();
         if($stmt->error){
+            $stmt->close();
             return $stmt->error;
         }
-        $stmt->close();
+         //$stmt->close();
+
+        //Update user_access_levels table
+        $sql = "SELECT id, email, role  FROM users WHERE email = ?";
+        $stmt = $db->connect()->prepare($sql);
+        $stmt->bind_param("s", $email);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0){
+            $user = $result->fetch_assoc();
+            $id = $user['id'];
+            $sql = "INSERT INTO user_access_levels (id, email, access_level)
+            VALUES (?, ?, ?)";
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->bind_param("iss", $id, $email, $role);
+            $stmt->execute();
+            $stmt->close();
+        }
+        //close db connection
+        $db->close();
+
     }
 }
 ?>

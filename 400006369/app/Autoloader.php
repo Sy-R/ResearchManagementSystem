@@ -9,7 +9,7 @@ class MyAutoloader{
 
     public static function autoloadFile($className){
         //convert class name to a file path
-       $className = str_replace('\\', '/', $className);
+       $className = str_replace('\\', DIRECTORY_SEPARATOR, $className);
        $filePath = __DIR__ .'/'. $className . '.php';
 
         if(file_exists($filePath)){
